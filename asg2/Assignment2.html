@@ -1,0 +1,110 @@
+<!-- Mingze Guo -->
+<!-- mguo12@ucsc.edu -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Assignment 2</title>
+        <script src="Assignment2.js"></script>
+        <script src="Point.js"></script>
+        <script src="Triangle.js"></script>
+        <script src="Circle.js"></script>
+        <script src="Cube.js"></script>
+        <script src="Cylinder.js"></script>
+
+        <!-- <script src="lib/cuon-matrix-cse160.js"></script> -->
+        <script src="lib/cuon-matrix.js"></script>
+        <script src="lib/cuon-utils.js"></script>
+        <script src="lib/webgl-debug.js"></script>
+        <script src="lib/webgl-utils.js"></script>
+    </head>
+
+    <body onload="main()">
+        <canvas id="webgl" width="400" height="400">
+            Please use a browser that supports "canvas"
+        </canvas>
+        <p>
+
+        <p id="info"> Info </p>
+
+        <p>
+            <button type="button" id="poke">Poke</button>
+            <button type="button" id="unpoke">UnPoke</button>
+        </p>
+
+        <p>
+            Head: <input type="range" min="-45" max="45" value="0" class="slider" id="headSlide">
+            Animation:
+            <button type="button" id="headOn">On</button>
+            <button type="button" id="headOff">Off</button>
+        </p>
+
+        <p>
+            Left arm: <input type="range" min="-45" max="45" value="0" class="slider" id="leftArmSlide">
+            Animation:
+            <button type="button" id="leftArmOn">On</button>
+            <button type="button" id="leftArmOff">Off</button>
+        </p>
+
+        <p>
+            Right arm: <input type="range" min="-45" max="45" value="0" class="slider" id="rightArmSlide">
+            Animation:
+            <button type="button" id="rightArmOn">On</button>
+            <button type="button" id="rightArmOff">Off</button>
+        </p>
+
+        <p>
+            Body: <input type="range" min="-45" max="45" value="0" class="slider" id="bodyInandOutSlide">
+            Animation:
+            <button type="button" id="bodyOn">On</button>
+            <button type="button" id="bodyOff">Off</button>
+        </p>
+
+        <p>
+            Left leg part 1: <input type="range" min="-45" max="45" value="0" class="slider" id="LLP1LRSlide">
+            Animation:
+            <button type="button" id="LLP1On">On</button>
+            <button type="button" id="LLP1Off">Off</button>
+        </p>
+
+        <p>
+            Left leg part 2: <input type="range" min="-45" max="45" value="0" class="slider" id="LLP2IOSlide">
+            Animation:
+            <button type="button" id="LLP2On">On</button>
+            <button type="button" id="LLP2Off">Off</button>
+        </p>
+
+        <p>
+            Left Foot: <input type="range" min="-45" max="45" value="0" class="slider" id="leftFootSlide">
+            Animation:
+            <button type="button" id="leftFootOn">On</button>
+            <button type="button" id="leftFootOff">Off</button>
+        </p>
+
+        <p>
+            Right leg part 1: <input type="range" min="-45" max="45" value="0" class="slider" id="RLP1LRSlide">
+            Animation:
+            <button type="button" id="RLP1On">On</button>
+            <button type="button" id="RLP1Off">Off</button>
+        </p>
+
+        <p>
+            Right leg part 2: <input type="range" min="-45" max="45" value="0" class="slider" id="RLP2IOSlide">
+            Animation:
+            <button type="button" id="RLP2On">On</button>
+            <button type="button" id="RLP2Off">Off</button>
+        </p>
+
+        <p>
+            Right foot: <input type="range" min="-45" max="45" value="0" class="slider" id="rightFootSlide">
+            Animation:
+            <button type="button" id="rightFootOn">On</button>
+            <button type="button" id="rightFootOff">Off</button>
+        </p>
+
+        <p>
+            Camera Angle: <input type="range" min="0" max="90" value="5" class="slider" id="angleSlide">
+        </p>
+    </body>
+</html>
