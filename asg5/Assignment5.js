@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { Reflector } from 'three/addons/objects/Reflector.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
@@ -15,7 +16,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 scene.add(new THREE.AmbientLight(0xffffff, 1));
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
-directionalLight.position.set(-5, 5, -5);
+directionalLight.position.set(-5, 5, 5);
 scene.add(directionalLight);
 
 const pointLight = new THREE.PointLight(0xff0000, 5);
@@ -63,7 +64,6 @@ gltfLoader.load('assets/models/porsche.glb', (gltf) => {
     scene.add(model);
 });
 
-// Animation Loop
 function animate() {
     requestAnimationFrame(animate);
 
@@ -73,6 +73,44 @@ function animate() {
     renderer.render(scene, camera);
 }
 animate();
+
+const horizontalMirrorGeometry = new THREE.PlaneGeometry(20, 50);
+const horizontalMirror = new Reflector(horizontalMirrorGeometry, {
+    clipBias: 0.003,
+    textureWidth: window.innerWidth,
+    textureHeight: window.innerHeight,
+    color: 0x999999,
+});
+horizontalMirror.rotation.x = -Math.PI / 2;
+horizontalMirror.position.set(0, -1, 0);
+scene.add(horizontalMirror);
+
+scene.fog = new THREE.Fog(0xcccccc, 10, 50);
+renderer.setClearColor(scene.fog.color);
+
+const particles = new THREE.BufferGeometry();
+const count = 500;
+const positions = [];
+
+for (let i = 0; i < count; i++) {
+    positions.push(
+        (Math.random() - 0.5) * 100,
+        Math.random() * 20 + 5,
+        (Math.random() - 0.5) * 100
+    );
+}
+
+particles.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+
+const material = new THREE.PointsMaterial({
+    size: 0.3,
+    color: 0xffff00,
+    transparent: true,
+    opacity: 0.8
+});
+
+const particleSystem = new THREE.Points(particles, material);
+scene.add(particleSystem);
 
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth/window.innerHeight;
